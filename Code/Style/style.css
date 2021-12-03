@@ -1,0 +1,11 @@
+body {
+    background-color: cadetblue;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    order: 2;
+}
