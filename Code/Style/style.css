@@ -3,9 +3,14 @@ body {
 }
 .wrapper {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    max-width: 1024px;
+    margin-left: 50%;
+    margin-right: 50%;
 }
 
 .card {
-    order: 2;
+    flex-direction: column;
+    margin: 10px;
+    border: 3px black;
 }
