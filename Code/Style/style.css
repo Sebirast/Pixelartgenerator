@@ -1,16 +1,13 @@
 body {
     background-color: cadetblue;
 }
-.wrapper {
-    display: flex;
+canvas {
     width: 100%;
-    max-width: 1024px;
-    margin-left: 50%;
-    margin-right: 50%;
+    height: auto;
+    border: 2px solid #0000;
+    background-color: black;
+    border-radius: 10px;
 }
 
-.card {
-    flex-direction: column;
-    margin: 10px;
-    border: 3px black;
+.container {
 }
