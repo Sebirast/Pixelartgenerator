@@ -9,5 +9,13 @@ canvas {
     border-radius: 10px;
 }
 
-.container {
+h1 {
+    text-align: center;
+    margin: 10px;
 }
+
+.btn {
+    margin-top: 10px;
+    width: 100%;
+}
+

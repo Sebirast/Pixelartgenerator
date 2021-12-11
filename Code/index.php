@@ -12,15 +12,26 @@
 
     <body>
         <div class="container">
-            <div class="title"></div>
+            <h1>Pixelartgenerator</h1>
             <div class="row">
                 <div class="col-8">
-                    <h1>1. Column</h1>
+                    <h2>1. Column</h1>
                     <canvas id="Canvas"></canvas>
+                    <div class="row">
+                        <div class="col">
+                            <input class="btn btn-success" type="text" value="Upload image">
+                        </div>
+                        <div class="col">
+                            <input class="btn btn-primary" type="text" value="Download image">
+                        </div>
+                        <div class="col">
+                            <input class=" btn btn-danger" type="Reset" value="Reset Generator">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col">
-                    <h1>2. Column</h1>
+                    <h2>2. Column</h1>
                 </div>
             </div>    
         </div>
