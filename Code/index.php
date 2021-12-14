@@ -14,7 +14,7 @@
         <div class="container">
             <h1>Pixelartgenerator</h1>
             <div class="row">
-                <div class="col-8">
+                <div id="col8" class="col-8">
                     <h2>1. Column</h1>
                     <canvas id="Canvas"></canvas>
                     <div class="row">
@@ -35,5 +35,7 @@
                 </div>
             </div>    
         </div>
+        <script src="Scripts/script.js" type="module"></script>
+        <script src="Scripts/utilities.js" type="module"></script>
     </body>
 </html>
