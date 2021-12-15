@@ -19,7 +19,13 @@
                     <canvas id="Canvas"></canvas>
                     <div class="row">
                         <div class="col">
-                            <div class="btn btn-success"></div>
+                            <div class="input-group mb-3">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Upload Image</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">via URL</a></li>
+                                    <li><a class="dropdown-item" href="#">via filesystem</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col">
                             <input class="btn btn-primary" type="text" value="Download image">
@@ -37,5 +43,6 @@
         </div>
         <script src="Scripts/script.js" type="module"></script>
         <script src="Scripts/utilities.js" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
