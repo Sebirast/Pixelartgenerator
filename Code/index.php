@@ -19,7 +19,7 @@
                     <canvas id="Canvas"></canvas>
                     <div class="row">
                         <div class="col">
-                            <input class="btn btn-success" type="text" value="Upload image">
+                            <div class="btn btn-success"></div>
                         </div>
                         <div class="col">
                             <input class="btn btn-primary" type="text" value="Download image">
