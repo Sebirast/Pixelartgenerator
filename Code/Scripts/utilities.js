@@ -13,3 +13,7 @@ export function isUrlValid(testUrl) {
 
     return url.protocol === "http:" || url.protocol === "https:";
 }
+
+export function log(message) {
+    console.log(message);
+}

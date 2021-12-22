@@ -29,10 +29,10 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <input id="resetButton" class="btn btn-primary" type="text" value="Download image">
+                                <input  class="btn btn-primary" type="text" value="Download image">
                             </div>
                             <div class="col">
-                                <input class=" btn btn-danger" type="Reset" value="Reset Generator">
+                                <input id="resetButton" class="btn btn-danger" type="Reset" value="Reset Generator">
                             </div>
                         </div>
                     </div>

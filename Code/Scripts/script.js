@@ -1,11 +1,12 @@
-import * as utilities from "./utilities.js"
+import * as utilities from "./utilities.js";
+import { log } from "./utilities.js";
 
 const canvas = document.getElementById("Canvas");
 const canvasContext = canvas.getContext("2d");
+const defaultImage = "https://images.unsplash.com/photo-1629197519111-053d2be5b392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2023&q=80";
 
 const urlInput = document.getElementById("getUrl");
 const urlSubmitButton = document.getElementById("submitUrl");
-const modal = document.getElementById("urlWindow");
 
 const resetButton = document.getElementById("resetButton");
 
@@ -20,6 +21,11 @@ function getUrl(event) {
     drawImage(loadPictureFromUrl(url));
 
     return url;
+}
+
+function resetImage() {
+    log("entered resetImage");
+    drawImage(loadPictureFromUrl(defaultImage));
 }
 
 function loadPictureFromUrl(url) {
@@ -52,3 +58,4 @@ function drawImage(image) {
 // loadPictureFromUrl("https://images.unsplash.com/photo-1639402479778-bcb2d2fbb69e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80");
 
 urlSubmitButton.addEventListener("click", getUrl);
+resetButton.addEventListener("click", resetImage);
