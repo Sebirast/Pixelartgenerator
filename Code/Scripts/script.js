@@ -5,18 +5,17 @@ const canvasContext = canvas.getContext("2d");
 
 const urlInput = document.getElementById("getUrl");
 const urlSubmitButton = document.getElementById("submitUrl");
+const modal = document.getElementById("urlWindow");
 
 function getUrl(event) {
     const url = urlInput.value;
-    console.log(url);
-    console.log(utilities.isUrlValid(url));
 
     if(utilities.isUrlValid(url) == false) {
         alert("Url is not valid");
         return;
     }
 
-    console.log(url);
+    drawImage(loadPictureFromUrl(url));
 
     return url;
 }
