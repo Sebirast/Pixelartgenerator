@@ -7,7 +7,7 @@ export function isUrlValid(testUrl) {
         return false;
     }
 
-    if(url.match(".(jpeg|jpg|gif|png)" != true)) {
+    if(testUrl.match(".(jpeg|jpg|gif|png)" != true)) {
         return false;
     }
 
