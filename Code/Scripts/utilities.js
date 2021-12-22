@@ -1,12 +1,15 @@
-export function getMeta(url) {
-    let height;
-    let width;
-    let image = new Image;
-    image.src = url;
-    image.onload = function() {
-        height = this.height;
-        width = this.width;
+export function isUrlValid(testUrl) {
+    let url;
+    try {
+        url = new URL(testUrl);
+    }
+    catch(exception) {
+        return false;
     }
 
-    return ;
+    if(url.match(".(jpeg|jpg|gif|png)" != true)) {
+        return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
 }

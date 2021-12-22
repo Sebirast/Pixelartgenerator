@@ -56,15 +56,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="get">
-                            <div class="input-group mb3">
-                                <span class="input-group-text" >URL:</span>
-                                <input type="text" id="getUrl" class="form-control">
-                            </div>
-                        </form>
+                        <div class="input-group mb3">
+                            <span class="input-group-text" >URL:</span>
+                            <input class="form-control" type="text" name="zahl3" id="getUrl" required>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button id="submitUrl" type="button" class="btn btn-primary">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                     </div>
