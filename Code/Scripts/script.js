@@ -7,6 +7,8 @@ const urlInput = document.getElementById("getUrl");
 const urlSubmitButton = document.getElementById("submitUrl");
 const modal = document.getElementById("urlWindow");
 
+const resetButton = document.getElementById("resetButton");
+
 function getUrl(event) {
     const url = urlInput.value;
 
