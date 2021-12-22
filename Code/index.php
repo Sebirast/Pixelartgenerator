@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <input class="btn btn-primary" type="text" value="Download image">
+                                <input id="resetButton" class="btn btn-primary" type="text" value="Download image">
                             </div>
                             <div class="col">
                                 <input class=" btn btn-danger" type="Reset" value="Reset Generator">
@@ -56,13 +56,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="input-group mb3">
-                            <span class="input-group-text" >URL:</span>
-                            <input class="form-control" type="text" name="zahl3" id="getUrl" required>
-                        </div>
+                            <div class="input-group mb3">
+                                <span class="input-group-text" >URL:</span>
+                                <input class="form-control" type="text" name="zahl3" id="getUrl" required>
+                            </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="submitUrl" type="button" data-dismiss="modal" class="btn btn-primary">Submit</button>
+                        <button id="submitUrl" type="button" class="btn btn-primary">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                     </div>
