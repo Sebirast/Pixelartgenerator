@@ -11,59 +11,63 @@
     </head>
 
     <body>
-        <div class="container">
-            <h1>Pixelartgenerator</h1>
-            <div class="row">
-                <div id="col8" class="col-8">
-                    <h2>1. Column</h1>
-                    <canvas id="Canvas"></canvas>
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Upload Image</button>
-                                <ul class="dropdown-menu">
-                                    <li><a id="viaUrlButton" class="dropdown-item" href="#" data-toggle="modal" data-target="#urlWindow">via URL</a></li>
-                                    <li><a id="viaFileSystemButton" class="dropdown-item" href="#">via Filesystem</a></li>
-                                </ul>
+        <div>
+            <div class="container">
+                <h1>Pixelartgenerator</h1>
+                <div class="row">
+                    <div id="col8" class="col-8">
+                        <h2>1. Column</h1>
+                        <canvas id="Canvas"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Upload Image</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a id="viaUrlButton" class="dropdown-item" href="#" data-toggle="modal" data-target="#urlWindow">via URL</a></li>
+                                        <li><a id="viaFileSystemButton" class="dropdown-item" href="#">via Filesystem</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input class="btn btn-primary" type="text" value="Download image">
+                            </div>
+                            <div class="col">
+                                <input class=" btn btn-danger" type="Reset" value="Reset Generator">
                             </div>
                         </div>
-                        <div class="col">
-                            <input class="btn btn-primary" type="text" value="Download image">
-                        </div>
-                        <div class="col">
-                            <input class=" btn btn-danger" type="Reset" value="Reset Generator">
-                        </div>
                     </div>
-                </div>
 
-                <div class="col">
-                    <h2>2. Column</h1>
-                </div>
+                    <div class="col">
+                        <h2>2. Column</h1>
+                    </div>
 
-            </div>    
+                </div>    
+            </div>
         </div>
 
-        <div class="modal fade" id="urlWindow" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Please enter your Url here</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="get">
-                        <div class="input-group mb3">
-                            <span class="input-group-text" >URL:</span>
-                            <input type="text" id="getUrl" class="form-control">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Submit</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
+        <div>
+            <div class="modal fade" id="urlWindow" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Please enter your Url here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="get">
+                            <div class="input-group mb3">
+                                <span class="input-group-text" >URL:</span>
+                                <input type="text" id="getUrl" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
