@@ -62,7 +62,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="submitUrl" type="button" class="btn btn-primary">Submit</button>
+                        <button id="submitUrl" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                     </div>
