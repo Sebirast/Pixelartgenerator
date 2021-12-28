@@ -23,6 +23,7 @@
                                 <div class="input-group mb-3">
                                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Upload Image</button>
                                     <ul class="dropdown-menu">
+                                        <input id="fileInputButton" class="fileInputButton" type="file">
                                         <li><a id="viaUrlButton" class="dropdown-item" href="#" data-toggle="modal" data-target="#urlWindow">via URL</a></li>
                                         <li><a id="viaFileSystemButton" class="dropdown-item" href="#">via Filesystem</a></li>
                                     </ul>
