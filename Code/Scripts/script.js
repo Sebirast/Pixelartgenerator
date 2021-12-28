@@ -12,8 +12,8 @@ const resetButton = document.getElementById("resetButton");
 const viaFilesystemButton = document.getElementById("viaFileSystemButton");
 const fileInputButton = document.getElementById("fileInputButton");
 
-var counter = 0;
-
+let counter = 0;
+let currentImageData;
 
 function getUrl(event) {
     const url = urlInput.value;
@@ -68,6 +68,8 @@ function drawImage(image) {
 
         canvasContext.drawImage(image, 0, 0);
     }
+    currentImageData = canvasContext.getImageData(0, 0, 100, 100);
+    console.log(currentImageData.);
 }
 
 window.onload = resetImage;
