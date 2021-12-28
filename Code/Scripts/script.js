@@ -12,6 +12,8 @@ const resetButton = document.getElementById("resetButton");
 const viaFilesystemButton = document.getElementById("viaFileSystemButton");
 const fileInputButton = document.getElementById("fileInputButton");
 
+var counter = 0;
+
 
 function getUrl(event) {
     const url = urlInput.value;
@@ -27,8 +29,12 @@ function getUrl(event) {
 }
 
 function resetImage() {
+    if(counter != 0) {
+        alert("All changes are lost");
+    }
     canvasContext.globalAlpha = 0.5;
     drawImage(loadPictureFromUrl(defaultImage));
+    counter += 1;
 }
 
 function loadPictureFromUrl(url) {
