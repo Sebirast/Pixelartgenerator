@@ -10,7 +10,7 @@ const urlSubmitButton = document.getElementById("submitUrl");
 const resetButton = document.getElementById("resetButton");
 
 const viaFilesystemButton = document.getElementById("viaFileSystemButton");
-const fileInputButton = document.querySelector("#fileInputButton");
+const fileInputButton = document.getElementById("fileInputButton");
 
 
 function getUrl(event) {
@@ -38,34 +38,21 @@ function loadPictureFromUrl(url) {
     return image;
 }
 
-function loadPictureFromFileSystem() {
+function loadPictureFromFileSystem(event) {
     fileInputButton.click();
-    var uploadedImage;
 
-    // https://www.youtube.com/watch?v=lzK8vM_wdoY -> this video was used to write the following lines of code
+    // var checkExist = setInterval(function() {
+    //     if (event.target.files[0]) {
+    //        console.log("Exists!");
+    //        clearInterval(checkExist);
+    //     }
+    // }, 100);
 
-    // fileInputButton.addEventListener("change", function() {
-    //     const reader = new FileReader();
-    //     reader.addEventListener("load", () => {
-    //         uploadedImage = reader.result;
-    //     });
-    //     reader.readAsDataURL(this.files[0]);
-    // });
-    // var image = new Image();
-    // image.src = uploadedImage;
+    // https://stackoverflow.com/questions/63151823/how-to-display-a-picture-from-file-input-to-canvas
 
-    // drawImage(image);
-    var uploadedImage;
-
-    fileInputButton.addEventListener('change', function() {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => {
-        uploadedImage = reader.result;
-    });
-    reader.readAsDataURL(this.files[0]);
-    console.log(uploadedImage);
-    drawImage(loadPictureFromUrl(uploadedImage));
-    });
+    var image = new Image();
+    image.src = URL.createObjectURL(event.target.files[0]);
+    drawImage(image);
 }
 
 function drawImage(image) {
@@ -77,13 +64,8 @@ function drawImage(image) {
     }
 }
 
-
-
-// links: - https://images.unsplash.com/photo-1639269966566-fabc0b3f2a4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
-//        - https://images.unsplash.com/photo-1639402479778-bcb2d2fbb69e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80 
-
-// loadPictureFromUrl("https://images.unsplash.com/photo-1639402479778-bcb2d2fbb69e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80");
 window.onload = resetImage;
 urlSubmitButton.addEventListener("click", getUrl);
 resetButton.addEventListener("click", resetImage);
 viaFilesystemButton.addEventListener("click", loadPictureFromFileSystem);
+fileInputButton.addEventListener("change", loadPictureFromFileSystem);
