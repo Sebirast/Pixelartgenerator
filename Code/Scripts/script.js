@@ -39,6 +39,7 @@ function resetImage() {
 
 function loadPictureFromUrl(url) {
     let image = new Image;
+    image.setAttribute('crossOrigin', '');
     image.src = url;
 
     return image;
@@ -47,29 +48,22 @@ function loadPictureFromUrl(url) {
 function loadPictureFromFileSystem(event) {
     fileInputButton.click();
 
-    // var checkExist = setInterval(function() {
-    //     if (event.target.files[0]) {
-    //        console.log("Exists!");
-    //        clearInterval(checkExist);
-    //     }
-    // }, 100);
-
-    // https://stackoverflow.com/questions/63151823/how-to-display-a-picture-from-file-input-to-canvas
-
     var image = new Image();
+    image.setAttribute('crossOrigin', '');
     image.src = URL.createObjectURL(event.target.files[0]);
     drawImage(image);
 }
 
 function drawImage(image) {
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     image.onload = function() {
         canvas.width = image.width;
         canvas.height = image.height;
 
         canvasContext.drawImage(image, 0, 0);
+        currentImageData = canvasContext.getImageData(0, 0, 100, 100).data;
+        console.log(canvasContext.getImageData(0, 0, canvas.width, canvas.height).data);
     }
-    currentImageData = canvasContext.getImageData(0, 0, 100, 100);
-    console.log(currentImageData.);
 }
 
 window.onload = resetImage;
