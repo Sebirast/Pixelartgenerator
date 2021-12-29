@@ -17,3 +17,13 @@
 
 ## Utilities
 - Wahrscheinlich Bootstrap und Canvas 
+
+## Bewertungskriterien
+- Resultat
+- Idee => Resultat
+- Programmierung
+- Code-Qualität
+- Schwierigkeit vom Resultat
+- Aussehen / Gestaltung
+- Responsiveness
+- Urheberrecht berücksichtigt
