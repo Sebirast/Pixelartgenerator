@@ -30,7 +30,8 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <input  class="btn btn-primary" type="text" value="Download image">
+                                <input id="downLoadButton" class="btn btn-primary" type="text" value="Download image">
+                                <a href="" download = ""></a>
                             </div>
                             <div class="col">
                                 <input id="resetButton" class="btn btn-danger" type="Reset" value="Reset Generator">

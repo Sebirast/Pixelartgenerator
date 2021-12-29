@@ -12,6 +12,8 @@ const resetButton = document.getElementById("resetButton");
 const viaFilesystemButton = document.getElementById("viaFileSystemButton");
 const fileInputButton = document.getElementById("fileInputButton");
 
+const downLoadButton = document.getElementById("downLoadButton");
+
 let counter = 0;
 let currentImageData;
 
@@ -66,8 +68,18 @@ function drawImage(image) {
     }
 }
 
+// https://www.sanwebe.com/snippet/downloading-canvas-as-image-dataurl-on-button-click
+function downLoadImage() {
+    var image = canvas.toDataURL("image/png", 1.0);
+    var link = document.createElement('a');
+    link.download = "my-image.png";
+    link.href = image;
+    link.click();
+}
+
 window.onload = resetImage;
 urlSubmitButton.addEventListener("click", getUrl);
 resetButton.addEventListener("click", resetImage);
 viaFilesystemButton.addEventListener("click", loadPictureFromFileSystem);
 fileInputButton.addEventListener("change", loadPictureFromFileSystem);
+downLoadButton.addEventListener("click", downLoadImage);
