@@ -1,4 +1,5 @@
 import * as utilities from "./utilities.js";
+import * as processing from "./pixelartProcessing.js"
 
 const canvas = document.getElementById("Canvas");
 const canvasContext = canvas.getContext("2d");
@@ -14,11 +15,10 @@ const fileInputButton = document.getElementById("fileInputButton");
 
 const downLoadButton = document.getElementById("downLoadButton");
 
-const pixelSizeSlider = document.getElementById("pixelSizeSlider");
-const aSlider = document.getElementById("aSlider");
+export const pixelSizeSlider = document.getElementById("pixelSizeSlider");
+export const aSlider = document.getElementById("aSlider");
 
 let counter = 0;
-let currentImageData;
 
 function getUrl(event) {
     const url = urlInput.value;
@@ -66,8 +66,7 @@ function drawImage(image) {
         canvas.height = image.height;
 
         canvasContext.drawImage(image, 0, 0);
-        currentImageData = canvasContext.getImageData(0, 0, 100, 100).data;
-        console.log(canvasContext.getImageData(0, 0, canvas.width, canvas.height).data);
+        localStorage.setItem("imageData", JSON.stringify(canvasContext.getImageData(0, 0, 100, 100).data));
     }
 }
 
@@ -95,4 +94,5 @@ pixelSizeSlider.addEventListener("input", function() {
 aSlider.addEventListener("input", function() {
     const valueOfSlider = document.getElementById("valueOfASlider");
     valueOfSlider.textContent = aSlider.value;
+    processing.changeAValue();
 });
