@@ -86,6 +86,7 @@ viaFilesystemButton.addEventListener("click", loadPictureFromFileSystem);
 fileInputButton.addEventListener("change", loadPictureFromFileSystem);
 downLoadButton.addEventListener("click", downLoadImage);
 pixelSizeSlider.addEventListener("change", function() {
+pixelSizeSlider.addEventListener("input", function() {
     const valueOfSlider = document.getElementById("valuePixelSizeSlider");
     valueOfSlider.textContent = pixelSizeSlider.value;
 });
