@@ -14,6 +14,8 @@ const fileInputButton = document.getElementById("fileInputButton");
 
 const downLoadButton = document.getElementById("downLoadButton");
 
+const pixelSizeSlider = document.getElementById("pixelSizeSlider");
+
 let counter = 0;
 let currentImageData;
 
@@ -83,3 +85,7 @@ resetButton.addEventListener("click", resetImage);
 viaFilesystemButton.addEventListener("click", loadPictureFromFileSystem);
 fileInputButton.addEventListener("change", loadPictureFromFileSystem);
 downLoadButton.addEventListener("click", downLoadImage);
+pixelSizeSlider.addEventListener("change", function() {
+    const valueOfSlider = document.getElementById("valuePixelSizeSlider");
+    valueOfSlider.textContent = pixelSizeSlider.value;
+});
