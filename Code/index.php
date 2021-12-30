@@ -41,9 +41,15 @@
 
                     <div class="col">
                         <h2>2. Column</h1>
+                        <h3>Pixelsize:</h3>
                         <div class="slidercontainer">
                             <input id="pixelSizeSlider" class="slider" type="range" min="0" max="100" value="10" >
                             <h3 id="valuePixelSizeSlider" class="valueOfSlider">10</h3>
+                        </div>
+                        <h3>A value:</h3>
+                        <div class="slidercontainer">
+                            <input id="aSlider" class="slider" type="range" min="0" max="255" value="255">
+                            <h3 id="valueOfASlider" class="valueOfSlider">255</h3>
                         </div>
                     </div>
 

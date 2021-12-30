@@ -2,6 +2,10 @@ body {
     background-color: cadetblue;
 }
 
+h3 {
+    margin-top: 10px;
+}
+
 canvas {
     border: 2px solid #0000;
     /* background-color: black; */
