@@ -17,6 +17,8 @@
 
 ## Utilities
 - Wahrscheinlich Bootstrap und Canvas 
+- https://codepen.io/mirco-bellagamba/pen/vYGpBGO
+- https://github.com/josefrichter/resize/blob/master/public/preprocess.js
 
 ## Bewertungskriterien
 - Resultat
