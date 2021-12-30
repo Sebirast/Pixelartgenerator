@@ -23,3 +23,40 @@ h1 {
 .fileInputButton {
     display: none;
 }
+
+.slidercontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 7.5px;   
+    background: black;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: blueviolet;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    background: blueviolet;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pixelSizeSlider:hover {
+    opacity: 1;
+}

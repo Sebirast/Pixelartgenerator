@@ -41,6 +41,9 @@
 
                     <div class="col">
                         <h2>2. Column</h1>
+                        <div class="slidercontainer">
+                            <input id="pixelSizeSlider" class="slider" type="range" min="0" max="100">
+                        </div>
                     </div>
 
                 </div>    
