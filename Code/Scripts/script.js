@@ -19,6 +19,7 @@ export const pixelSizeSlider = document.getElementById("pixelSizeSlider");
 export const aSlider = document.getElementById("aSlider");
 
 let counter = 0;
+let imageData;
 
 function getUrl(event) {
     const url = urlInput.value;
@@ -66,7 +67,9 @@ function drawImage(image) {
         canvas.height = image.height;
 
         canvasContext.drawImage(image, 0, 0);
-        localStorage.setItem("imageData", JSON.stringify(canvasContext.getImageData(0, 0, 100, 100).data));
+        imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+        console.log(imageData);
+        
     }
 }
 
@@ -77,6 +80,17 @@ function downLoadImage() {
     link.download = "my-image.png";
     link.href = image;
     link.click();
+}
+
+function setAlpha() {
+    let sliderValue = aSlider.value;
+    let data = imageData.data;
+
+    for(let i = 0; i < data.length; i += 4) {
+        data[i + 3] = sliderValue;
+    }
+
+    canvasContext.putImageData(imageData, 0, 0);
 }
 
 window.onload = resetImage;
@@ -94,5 +108,5 @@ pixelSizeSlider.addEventListener("input", function() {
 aSlider.addEventListener("input", function() {
     const valueOfSlider = document.getElementById("valueOfASlider");
     valueOfSlider.textContent = aSlider.value;
-    processing.changeAValue();
+    setAlpha();
 });
