@@ -7,7 +7,7 @@ let processingTypes = {
     range
 };
 
-class Pixel {
+export class Pixel {
     constructor(r, g, b, a) {
         this.red = r;
         this.green = g;
@@ -24,7 +24,7 @@ class Pixel {
         };
     }
     
-    toPixelArray(data) {
+    static toPixelArray(data) {
         let array = []; 
         for(let i = 0; i < data.length; i += 4) {
             let p = new Pixel(
@@ -39,7 +39,7 @@ class Pixel {
     }
 }
 
-class Chunk {
+export class Chunk {
     constructor(content, length){
         this.content = content;
         this.sideLength = length;
