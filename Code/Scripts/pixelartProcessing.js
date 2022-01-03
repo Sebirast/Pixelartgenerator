@@ -52,11 +52,16 @@ export class Chunk {
         }
     }   
     
+
+    static fillChunkWithData(index, sideLenght) {
+
+    }
+
     getMiddlePixel() {
-        return new Pixel(this.content[this.middlePixel],
-            this.content[this.middlePixel + 1],
-            this.content[this.middlePixel + 2],
-            this.content[this.middlePixel + 3]
-        );
+        return this.pixelArray[this.middlePixel];
+    }
+
+    fillChunkWithColor(pixel) {
+        return;
     }
 }
