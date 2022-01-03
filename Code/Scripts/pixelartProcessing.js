@@ -40,12 +40,12 @@ export class Pixel {
 }
 
 export class Chunk {
-    constructor(content, length){
-        this.content = content;
+    constructor(pixelArray) {
+        this.pixelArray = pixelArray;
         this.sideLength = length;
 
         if(this.sideLength % 2 == 1) {
-            this.middlePixel = Math.ceil(Math.pow(this.sideLength, 2)/2) - 1;
+            this.middlePixel = Math.ceil(Math.pow(Math.sqrt(pixelArray.length), 2)/2) - 1;
         }
         else {
             // TODO think of a solution for even sidelenghts
@@ -53,8 +53,18 @@ export class Chunk {
     }   
     
 
-    static fillChunkWithData(index, sideLenght) {
+    static fillChunkWithData(indexOfChunk, sideLength, pixelArray, width, height) {
+        let array = [];
+        let indexOfFirstPixel = indexOfChunk * sideLength; // TODO is that really right
 
+        for(let i = 0; i < sideLength; i++) {
+            for(let o = 0; o < sideLength; o++) {
+                let index = i * width
+                array.push(pixelArray[(width * i) + o]);
+            }
+        }
+
+        return new Chunk(array);
     }
 
     getMiddlePixel() {

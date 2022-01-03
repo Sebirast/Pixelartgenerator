@@ -70,6 +70,8 @@ function drawImage(image) {
         imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
         let pixelArray = processing.Pixel.toPixelArray(imageData.data);
         console.log(pixelArray);
+        let chunk = processing.Chunk.fillChunkWithData(0, 5, pixelArray, canvas.width, canvas.height);
+        console.log(chunk);
     }
 }
 
