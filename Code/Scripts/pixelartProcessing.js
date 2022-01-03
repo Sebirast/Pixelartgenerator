@@ -37,6 +37,15 @@ export class Pixel {
         }
         return array;
     }
+    
+    static toImageData(pixelArray, imageData) {
+        for(let i = 0; i < pixelArray.length; i += 4) {
+            imageData[i] = pixelArray[i];
+            imageData[i + 1] = pixelArray[i + 1];
+            imageData[i + 2] = pixelArray[i + 2];
+            imageData[i + 3] = pixelArray[i + 3];
+        }
+    }
 }
 
 export class Chunk {
