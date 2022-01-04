@@ -72,19 +72,16 @@ function drawImage(image) {
         console.log(imageData.width, imageData.height);
 
         let pixelArray = processing.Pixel.toPixelArray(imageData.data);
-        let chunk = processing.Chunk.fillChunkWithData(0, 100, pixelArray, imageData.width, imageData.height);
+        let chunk = processing.Chunk.fillChunkWithData(0, 20, pixelArray, imageData.width, 0);
+        let chunk2 = processing.Chunk.fillChunkWithData(0, 20, pixelArray, imageData.width, 2);
         // console.log(chunk.pixelArray);
         let data = imageData.data;
 
         console.log(chunk.pixelArray);
         console.log(chunk.pixelArray.length);
 
-        chunk.pixelArray.forEach(i => {
-            console.log(data[i.getData().index]);
-            data[i.getData().index * 4] = 0;
-            data[i.getData().index * 4 + 1 ] = 0;
-            data[i.getData().index * 4 + 2] = 0;
-        });
+        imageData = chunk.addChunkToImageData(imageData);
+        imageData = chunk2.addChunkToImageData(imageData);
 
         canvasContext.putImageData(imageData, 0, 0);
     }
