@@ -70,18 +70,30 @@ export class Chunk {
             // TODO think of a solution for even sidelenghts
         }
     }   
-    
+
     static fillChunkWithData(indexOfChunk, sideLength, pixelArray, width, height) {
         let array = [];
-        let indexOfFirstPixel = indexOfChunk * sideLength; // TODO is that really right
+        let indexOfFirstPixel = indexOfChunk * sideLength + sideLength * height * width; // TODO is that really right
 
         for(let i = 0; i < sideLength; i++) { // for rows
             for(let o = 0; o < sideLength; o++) { 
-                array.push(pixelArray[(width * i) + o]);
+                array.push(pixelArray[indexOfFirstPixel + (width * i) + o]);
             }
         }
 
         return new Chunk(array);
+    }
+
+    addChunkToImageData(imageData) {
+        let data = imageData.data;
+
+        this.pixelArray.forEach(pixel => {
+            data[pixel.getData().index * 4] = 0;
+            data[pixel.getData().index * 4 + 1] = 0;
+            data[pixel.getData().index * 4 + 2] = 0;
+        });
+
+        return imageData;
     }
 
     getMiddlePixel() {
