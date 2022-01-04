@@ -1,18 +1,19 @@
 import { aSlider, pixelSizeSlider } from "./script.js";
 
-let processingTypes = {
-    median, 
-    average, 
-    middlePixel, 
-    range
-};
+// let processingTypes = {
+//     median, 
+//     average, 
+//     middlePixel, 
+//     range
+// };
 
 export class Pixel {
-    constructor(r, g, b, a) {
+    constructor(r, g, b, a, index) {
         this.red = r;
         this.green = g;
         this.blue = b;
         this.alpha = a;
+        this.index = index;
     }
 
     getData() {
@@ -20,7 +21,8 @@ export class Pixel {
             red: this.red,
             green: this.green, 
             blue: this.blue,
-            alpha: this.alpha
+            alpha: this.alpha,
+            index: this.index
         };
     }
     
@@ -31,10 +33,18 @@ export class Pixel {
                 data[i],
                 data[i + 1],
                 data[i + 2],
-                data[i + 3]
+                data[i + 3], 
+                0
             )
             array.push(p);
         }
+
+        for(let o = 0; o < array.length; o++) {
+            array[o].index = o;
+        }
+
+        console.log(array);
+
         return array;
     }
     
@@ -51,7 +61,7 @@ export class Pixel {
 export class Chunk {
     constructor(pixelArray) {
         this.pixelArray = pixelArray;
-        this.sideLength = length;
+        this.sideLength = Math.sqrt(pixelArray.length);
 
         if(this.sideLength % 2 == 1) {
             this.middlePixel = Math.ceil(Math.pow(Math.sqrt(pixelArray.length), 2)/2) - 1;
@@ -61,14 +71,12 @@ export class Chunk {
         }
     }   
     
-
     static fillChunkWithData(indexOfChunk, sideLength, pixelArray, width, height) {
         let array = [];
         let indexOfFirstPixel = indexOfChunk * sideLength; // TODO is that really right
 
-        for(let i = 0; i < sideLength; i++) {
-            for(let o = 0; o < sideLength; o++) {
-                let index = i * width
+        for(let i = 0; i < sideLength; i++) { // for rows
+            for(let o = 0; o < sideLength; o++) { 
                 array.push(pixelArray[(width * i) + o]);
             }
         }
