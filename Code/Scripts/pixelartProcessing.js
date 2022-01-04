@@ -92,3 +92,15 @@ export class Chunk {
         return;
     }
 }
+
+export class Processor {
+    constructor(chunkArray) {
+
+    }
+
+    static imageToChunkArray(imageData) {
+        let data = imageData.data;
+        let pixelArray = Pixel.toPixelArray(data);
+
+    }
+}
