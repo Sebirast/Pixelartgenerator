@@ -55,18 +55,7 @@ export class Pixel {
             array[o].index = o;
         }
 
-        console.log(array);
-
         return array;
-    }
-    
-    static toImageData(pixelArray, imageData) {
-        for(let i = 0; i < pixelArray.length; i += 4) {
-            imageData[i] = pixelArray[i];
-            imageData[i + 1] = pixelArray[i + 1];
-            imageData[i + 2] = pixelArray[i + 2];
-            imageData[i + 3] = pixelArray[i + 3];
-        }
     }
 }
 
@@ -80,6 +69,7 @@ export class Chunk {
         }
         else {
             // TODO think of a solution for even sidelenghts
+            this.middlePixel = Math.ceil(Math.pow(Math.sqrt(pixelArray.length), 2)/2) - 1;
         }
     }   
 
@@ -100,9 +90,9 @@ export class Chunk {
         let data = imageData.data;
 
         this.pixelArray.forEach(pixel => {
-            data[pixel.getIndex().index * 4] = 0;
-            data[pixel.getIndex().index * 4 + 1] = 0;
-            data[pixel.getIndex().index * 4 + 2] = 0;
+            data[pixel.getIndex().index * 4] = pixel.red;
+            data[pixel.getIndex().index * 4 + 1] = pixel.green;
+            data[pixel.getIndex().index * 4 + 2] = pixel.blue;
         });
 
         return imageData;
@@ -113,7 +103,11 @@ export class Chunk {
     }
 
     fillChunkWithColor(pixel) {
-        return;
+        this.pixelArray.forEach(element => {
+            element.red = pixel.red;
+            element.green = pixel.green;
+            element.blue = pixel.blue;
+        });
     }
 }
 
@@ -133,17 +127,29 @@ export class Processor {
         let quantityOfChunksHorizontal = Math.floor(width / sideLength);
         let quantityOfChunksVertical = Math.floor(height / sideLength);
 
-        console.log(quantityOfChunksHorizontal, quantityOfChunksVertical, imageData.height, imageData.width);
-
         let chunkArray = [];
 
-        for(let i = 0; i < 3; i++) {
-            for(let o = 0; o < 3; i++) {
-                let chunk = Chunk.fillChunkWithData(o, sideLength, pixelArray, width, i);
-                chunkArray.push(chunk);
+        for(let i = 0; i < quantityOfChunksVertical; i++) {
+            for(let o = 0; o < quantityOfChunksHorizontal; o++) {
+                chunkArray.push(Chunk.fillChunkWithData(o, sideLength, pixelArray, imageData.width, i));
             }
         }
 
         return new Processor(chunkArray);
+    }
+
+    fillChunksWithColors() {
+        this.chunkArray.forEach(chunk => {
+            chunk.fillChunkWithColor(chunk.getMiddlePixel());
+        });
+
+    }
+
+    addChunksToImageData(imageData, canvasContext) {
+        this.chunkArray.forEach(chunk => {
+            chunk.addChunkToImageData(imageData);
+        });
+
+        canvasContext.putImageData(imageData, 0, 0);
     }
 }

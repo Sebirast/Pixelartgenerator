@@ -15,10 +15,13 @@ const fileInputButton = document.getElementById("fileInputButton");
 
 const downLoadButton = document.getElementById("downLoadButton");
 
+const goButton = document.getElementById("goButton");
+
 export const pixelSizeSlider = document.getElementById("pixelSizeSlider");
 export const aSlider = document.getElementById("aSlider");
 
 let counter = 0;
+let processor;
 let imageData;
 
 function getUrl(event) {
@@ -67,23 +70,8 @@ function drawImage(image) {
         canvas.height = image.height;
 
         canvasContext.drawImage(image, 0, 0);
-        imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
-
-        console.log(imageData.width, imageData.height);
-
-        let pixelArray = processing.Pixel.toPixelArray(imageData.data);
-        let chunk = processing.Chunk.fillChunkWithData(0, 20, pixelArray, imageData.width, 0);
-        let chunk2 = processing.Chunk.fillChunkWithData(0, 20, pixelArray, imageData.width, 2);
-        // console.log(chunk.pixelArray);
-        let data = imageData.data;
-
-        console.log(chunk.pixelArray);
-        console.log(chunk.pixelArray.length);
-
-        imageData = chunk.addChunkToImageData(imageData);
-        imageData = chunk2.addChunkToImageData(imageData);
-
-        canvasContext.putImageData(imageData, 0, 0);
+        window.imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+        console.log(window.imageData.data);
     }
 }
 
@@ -107,6 +95,15 @@ function setAlpha() {
     canvasContext.putImageData(imageData, 0, 0);
 }
 
+function setPixels() {
+    let currentData = window.imageData;
+    console.log(window.imageData.data);
+    processor = processing.Processor.imageToChunkArray(currentData, pixelSizeSlider.value);
+
+    processor.fillChunksWithColors();
+    processor.addChunksToImageData(currentData, canvasContext);
+}
+ 
 window.onload = resetImage;
 urlSubmitButton.addEventListener("click", getUrl);
 resetButton.addEventListener("click", resetImage);
@@ -124,3 +121,6 @@ aSlider.addEventListener("input", function() {
     valueOfSlider.textContent = aSlider.value;
     setAlpha();
 });
+
+goButton.addEventListener("click", setPixels);
+pixelSizeSlider.addEventListener("input", setPixels);
