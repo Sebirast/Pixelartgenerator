@@ -100,9 +100,9 @@ export class Chunk {
         let data = imageData.data;
 
         this.pixelArray.forEach(pixel => {
-            data[pixel.getData().index * 4] = 0;
-            data[pixel.getData().index * 4 + 1] = 0;
-            data[pixel.getData().index * 4 + 2] = 0;
+            data[pixel.getIndex().index * 4] = 0;
+            data[pixel.getIndex().index * 4 + 1] = 0;
+            data[pixel.getIndex().index * 4 + 2] = 0;
         });
 
         return imageData;
