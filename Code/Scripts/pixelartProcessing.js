@@ -119,12 +119,31 @@ export class Chunk {
 
 export class Processor {
     constructor(chunkArray) {
-
+        this.chunkArray = chunkArray;
     }
 
-    static imageToChunkArray(imageData) {
+    static imageToChunkArray(imageData, sideLength) {
         let data = imageData.data;
+
+        let width = imageData.width;
+        let height = imageData.height;
+
         let pixelArray = Pixel.toPixelArray(data);
 
+        let quantityOfChunksHorizontal = Math.floor(width / sideLength);
+        let quantityOfChunksVertical = Math.floor(height / sideLength);
+
+        console.log(quantityOfChunksHorizontal, quantityOfChunksVertical, imageData.height, imageData.width);
+
+        let chunkArray = [];
+
+        for(let i = 0; i < 3; i++) {
+            for(let o = 0; o < 3; i++) {
+                let chunk = Chunk.fillChunkWithData(o, sideLength, pixelArray, width, i);
+                chunkArray.push(chunk);
+            }
+        }
+
+        return new Processor(chunkArray);
     }
 }
