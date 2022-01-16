@@ -1,11 +1,3 @@
-import { aSlider, pixelSizeSlider } from "./script.js";
-
-// let processingTypes = {
-//     median, 
-//     average, 
-//     middlePixel, 
-//     range
-// };
 
 export class Pixel {
     constructor(r, g, b, a, index) {
@@ -145,11 +137,29 @@ export class Processor {
 
     }
 
-    addChunksToImageData(imageData, canvasContext) {
+    addChunksToImageData(imageData, canvasContext, originalImageData) {
         this.chunkArray.forEach(chunk => {
             chunk.addChunkToImageData(imageData);
         });
 
         canvasContext.putImageData(imageData, 0, 0);
+    }
+}
+
+export class ImageDataStorage {
+    constructor(imageData) {
+        this.imageData = imageData;
+        this.formerData = imageData;
+    }
+
+    getImageData() {
+        return this.imageData;
+    }
+
+    setImageData(imageData) {
+        this.imageData.forEach(value => {
+
+        });
+        this.imageData = imageData;
     }
 }
