@@ -2,12 +2,25 @@ body {
     background-color: cadetblue;
 }
 
+h3 {
+    margin-top: 10px;
+}
+
 canvas {
     border: 2px solid #0000;
     /* background-color: black; */
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.invisibleCanvas {
+    border: 2px solid #0000;
+    /* background-color: black; */
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: none;
 }
 
 h1 {
@@ -22,4 +35,49 @@ h1 {
 
 .fileInputButton {
     display: none;
+}
+
+.slidercontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 5px;
+    border-radius: 7.5px;   
+    background: grey;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: inline-block;    
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: blueviolet;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    background: blueviolet;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.valueOfSlider {
+    display: inline-block;
+    margin-left: 10px;
 }
