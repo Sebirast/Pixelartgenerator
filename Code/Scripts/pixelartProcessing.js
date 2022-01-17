@@ -67,9 +67,9 @@ export class Chunk {
 
     static fillChunkWithData(indexOfChunk, sideLength, pixelArray, width, height) {
         let array = [];
-        let indexOfFirstPixel = indexOfChunk * sideLength + sideLength * height * width; // TODO is that really right
+        let indexOfFirstPixel = indexOfChunk * sideLength + sideLength * height * width; 
 
-        for(let i = 0; i < sideLength; i++) { // for rows
+        for(let i = 0; i < sideLength; i++) { 
             for(let o = 0; o < sideLength; o++) { 
                 array.push(pixelArray[indexOfFirstPixel + (width * i) + o]);
             }

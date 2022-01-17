@@ -20,6 +20,8 @@ const goButton = document.getElementById("goButton");
 const invisbleCanvas = document.getElementById("invisbleCanvas");
 const invisbleCanvasContext = invisbleCanvas.getContext("2d");
 
+const valueOfSlider = document.getElementById("valueOfASlider");
+
 let counter = 0;
 let imageData;
 let processor;
@@ -38,7 +40,7 @@ function getUrl(event) {
     }
 
     drawImage(loadPictureFromUrl(url));
-    drawImageOnInvisbleCanvas(loadPictureFromFileSystem(url))
+    drawImageOnInvisbleCanvas(loadPictureFromUrl(url))
 
     return url;
 }
@@ -50,7 +52,6 @@ function drawImageOnInvisbleCanvas(image) {
         invisbleCanvas.height = image.height;
 
         invisbleCanvasContext.drawImage(image, 0, 0);
-        var originalImageData = canvasContext.getImageData(0, 0, invisbleCanvas.width, invisbleCanvas.height);
         console.log("Hi");
     }
 
@@ -63,6 +64,11 @@ function resetImage() {
     canvasContext.globalAlpha = 0.5;
     drawImage(loadPictureFromUrl(defaultImage));
     counter += 1;
+    drawImageOnInvisbleCanvas(loadPictureFromUrl(defaultImage));
+
+    pixelSizeSlider.value = 1;
+    valueOfSlider.textContent = pixelSizeSlider.value;
+    aSlider.value = 255;
 }
 
 function loadPictureFromUrl(url) {
@@ -136,7 +142,6 @@ pixelSizeSlider.addEventListener("input", function() {
 });
 
 aSlider.addEventListener("input", function() {
-    const valueOfSlider = document.getElementById("valueOfASlider");
     valueOfSlider.textContent = aSlider.value;
     setAlpha();
 });
