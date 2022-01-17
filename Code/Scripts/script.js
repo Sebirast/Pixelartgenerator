@@ -17,6 +17,9 @@ const downLoadButton = document.getElementById("downLoadButton");
 
 const goButton = document.getElementById("goButton");
 
+const invisbleCanvas = document.getElementById("invisbleCanvas");
+const invisbleCanvasContext = invisbleCanvas.getContext("2d");
+
 let counter = 0;
 let imageData;
 let processor;
@@ -35,8 +38,22 @@ function getUrl(event) {
     }
 
     drawImage(loadPictureFromUrl(url));
+    drawImageOnInvisbleCanvas(loadPictureFromFileSystem(url))
 
     return url;
+}
+
+function drawImageOnInvisbleCanvas(image) {
+    invisbleCanvasContext.clearRect(0, 0, canvas.width, canvas.height);
+    image.onload = function() {
+        invisbleCanvas.width = image.width;
+        invisbleCanvas.height = image.height;
+
+        invisbleCanvasContext.drawImage(image, 0, 0);
+        var originalImageData = canvasContext.getImageData(0, 0, invisbleCanvas.width, invisbleCanvas.height);
+        console.log("Hi");
+    }
+
 }
 
 function resetImage() {
@@ -63,8 +80,8 @@ function loadPictureFromFileSystem(event) {
     var image = new Image();
     image.setAttribute('crossOrigin', '');
     image.src = URL.createObjectURL(event.target.files[0]);
-    imageCopy = image;
     drawImage(image);
+    drawImageOnInvisbleCanvas(loadPictureFromUrl(image.src));
 }
 
 function drawImage(image) {
@@ -99,11 +116,11 @@ function setAlpha() {
 }
 
 function setPixels() {
-    let currentData = imageData;
-    processor = processing.Processor.imageToChunkArray(currentData, pixelSizeSlider.value);
+    imageData = invisbleCanvasContext.getImageData(0, 0, invisbleCanvas.width, invisbleCanvas.height);
+    processor = processing.Processor.imageToChunkArray(imageData, pixelSizeSlider.value);
 
     processor.fillChunksWithColors();
-    processor.addChunksToImageData(currentData, canvasContext, imageData);
+    processor.addChunksToImageData(imageData, canvasContext);
 }
 
 window.onload = resetImage;
@@ -128,14 +145,6 @@ goButton.addEventListener("click", setPixels);
 pixelSizeSlider.addEventListener("input", setPixels);
 
 document.getElementById("refreshButton").addEventListener("click", function() {
-
-    // for(let i = 0; i < imageData.data.length; i++) {
-    //     imageData.data[i] = processing.imageDataCopy2[i];
-    // }
-
-    // console.log(imageDataCopy);
-    // canvasContext.putImageData(imageData, 0, 0);
-    // console.log("Hi");
     console.log(imageCopy);
     drawImage(loadPictureFromUrl(imageCopy.src));
 });
