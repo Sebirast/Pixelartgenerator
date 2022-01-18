@@ -1,6 +1,9 @@
 import * as utilities from "./utilities.js";
 import * as processing from "./pixelartProcessing.js";
 
+/**
+ * varibles and objects
+ */
 const canvas = document.getElementById("Canvas");
 const canvasContext = canvas.getContext("2d");
 const defaultImage = "https://images.unsplash.com/photo-1629197519111-053d2be5b392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2023&q=80";
@@ -29,7 +32,9 @@ export let imageDataCopy;
 
 let imageCopy;
 
-console.log("Hello World");
+/**
+ * functions
+ */
 
 function getUrl(event) {
     const url = urlInput.value;
@@ -45,6 +50,13 @@ function getUrl(event) {
     return url;
 }
 
+/**
+ * This function draws the image to a invisible canvas. I use the imageData of this canvas to calculate the pixel image 
+ * as it was impossible to somehow store the imageData constant. It wasn't either possible to store the imageData to a 
+ * other imageData object or a uint8ClampedArray as these objects then were refrenced
+ * 
+ * @param {*} image the imageCopy 
+ */
 function drawImageOnInvisbleCanvas(image) {
     invisbleCanvasContext.clearRect(0, 0, canvas.width, canvas.height);
     image.onload = function() {
@@ -57,6 +69,10 @@ function drawImageOnInvisbleCanvas(image) {
 
 }
 
+
+/**
+ * This function is called when the website loads and when the image is reset with the resetImage button
+ */
 function resetImage() {
     if(counter != 0) {
         alert("All changes are lost");
@@ -71,6 +87,11 @@ function resetImage() {
     aSlider.value = 255;
 }
 
+/**
+ * this function converts a link of an image (unsplash) to an imageObject that can be drawn by the canvas
+ * @param {*} url the image source 
+ * @returns an image
+ */
 function loadPictureFromUrl(url) {
     let image = new Image;
     imageCopy = image;
@@ -80,6 +101,11 @@ function loadPictureFromUrl(url) {
     return image;
 }
 
+
+/**
+ * this function fetches a picture from the fileSystem of the galary of a phone and draws it afterwards
+ * @param {*} event the event that containes the picture
+ */
 function loadPictureFromFileSystem(event) {
     fileInputButton.click();
 
@@ -90,6 +116,10 @@ function loadPictureFromFileSystem(event) {
     drawImageOnInvisbleCanvas(loadPictureFromUrl(image.src));
 }
 
+/**
+ * function that draws the image to a canvas
+ * @param {*} image the image that has to drawn
+ */
 function drawImage(image) {
     canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     image.onload = function() {
@@ -110,6 +140,9 @@ function downLoadImage() {
     link.click();
 }
 
+/**
+ * set the alpha channel of the srgb array of the image
+ */
 function setAlpha() {
     let sliderValue = aSlider.value;
     let data = imageData.data;
@@ -121,6 +154,9 @@ function setAlpha() {
     canvasContext.putImageData(imageData, 0, 0);
 }
 
+/**
+ * function that converts the image to an pixelartpicture 
+ */
 function setPixels() {
     imageData = invisbleCanvasContext.getImageData(0, 0, invisbleCanvas.width, invisbleCanvas.height);
     processor = processing.Processor.imageToChunkArray(imageData, pixelSizeSlider.value);
@@ -129,6 +165,9 @@ function setPixels() {
     processor.addChunksToImageData(imageData, canvasContext);
 }
 
+/**
+ * eventlisteners:
+ */
 window.onload = resetImage;
 urlSubmitButton.addEventListener("click", getUrl);
 resetButton.addEventListener("click", resetImage);

@@ -6,6 +6,10 @@ h3 {
     margin-top: 10px;
 }
 
+.title {
+    float: left;
+}
+
 canvas {
     border: 2px solid #0000;
     /* background-color: black; */
@@ -25,7 +29,7 @@ canvas {
 
 h1 {
     text-align: center;
-    margin: 10px;
+    margin: 20px;
 }
 
 .btn {
@@ -80,4 +84,13 @@ h1 {
 .valueOfSlider {
     display: inline-block;
     margin-left: 10px;
+}
+
+.page-footer {
+    background-color: darkcyan;
+    margin-bottom: 0px;
+}
+
+.page-footer {
+    margin-top: 20px;
 }
